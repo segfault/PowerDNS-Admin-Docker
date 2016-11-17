@@ -18,7 +18,8 @@ RUN apt-get update && \
 RUN chown -R $APP_USER:$APP_USER $APP_PATH
 
 RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git $APP_PATH/tmp; \
-    mv $APP_PATH/tmp/* $APP_PATH/tmp/.git* .; rmdir $APP_PATH/tmp
+    mv $APP_PATH/tmp/* $APP_PATH/tmp/.git* .; \
+    rmdir $APP_PATH/tmp
 
 COPY setup.py $APP_PATH
 RUN chmod a+x setup.py
