@@ -14,6 +14,9 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt
 
+RUN ls -lah /opt
+RUN ls -lah $APP_PATH
+
 VOLUME $APP_PATH
 WORKDIR $APP_PATH
 
