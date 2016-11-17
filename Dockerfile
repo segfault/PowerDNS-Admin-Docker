@@ -4,7 +4,7 @@ MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
 ENV APP_USER=web
 ENV APP_PATH=/opt/PowerDNS-Admin
-RUN useradd -s /bin/bash -d $APP_PATH -m $APP_USER
+RUN useradd -s /bin/bash -d/home/$APP_USER -m $APP_USER
 
 VOLUME $APP_PATH
 WORKDIR $APP_PATH
