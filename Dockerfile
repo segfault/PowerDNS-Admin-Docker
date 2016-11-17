@@ -17,6 +17,8 @@ RUN apt-get update && \
 
 RUN chown -R $APP_USER:$APP_USER /opt/PowerDNS-Admin
 
+RUN ls -lah
+
 RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git .
 COPY setup.py .
 
