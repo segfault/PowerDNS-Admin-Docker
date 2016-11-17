@@ -101,13 +101,13 @@ SIGNUP_ENABLED = "True" if not hasattr(os.environ, "SIGNUP_ENABLED") else os.env
 configFile.write("SIGNUP_ENABLED = {0}\n".format(SIGNUP_ENABLED))
 
 # POWERDNS CONFIG
-PDNS_STATS_URL = "" if not hasattr(os.environ, "PDNS_STATS_URL") else os.environ["PDNS_STATS_URL"]
+PDNS_STATS_URL = "http://127.0.0.1:8081/" if not hasattr(os.environ, "PDNS_STATS_URL") else os.environ["PDNS_STATS_URL"]
 configFile.write("PDNS_STATS_URL = '{0}'\n".format(PDNS_STATS_URL))
 
-PDNS_API_KEY = "" if not hasattr(os.environ, "PDNS_API_KEY") else os.environ["PDNS_API_KEY"]
+PDNS_API_KEY = "changeme" if not hasattr(os.environ, "PDNS_API_KEY") else os.environ["PDNS_API_KEY"]
 configFile.write("PDNS_API_KEY = '{0}'\n".format(PDNS_API_KEY))
 
-PDNS_VERSION = "" if not hasattr(os.environ, "PDNS_VERSION") else os.environ["PDNS_VERSION"]
+PDNS_VERSION = "3.4.2" if not hasattr(os.environ, "PDNS_VERSION") else os.environ["PDNS_VERSION"]
 configFile.write("PDNS_VERSION = '{0}'\n".format(PDNS_VERSION))
 
 # RECORDS ALLOWED TO EDIT
@@ -121,3 +121,10 @@ PRETTY_IPV6_PTR = "False" if not hasattr(os.environ, "PRETTY_IPV6_PTR") else os.
 configFile.write("PRETTY_IPV6_PTR = {0}\n".format(PRETTY_IPV6_PTR))
 
 configFile.close()
+
+PIP_REQUIREMENTS = "" if not hasattr(os.environ, "PIP_REQUIREMENTS") else os.environ["PIP_REQUIREMENTS"]
+if PIP_REQUIREMENTS != "":
+    reqsFile = open("requirements.txt", 'a')
+    for req in PIP_REQUIREMENTS.split(","):
+        reqsFile.write(req + "\n")
+    reqsFile.close()
