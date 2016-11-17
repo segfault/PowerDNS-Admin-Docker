@@ -1,12 +1,13 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-VOLUME "/opt/PowerDNS-Admin"
-WORKDIR "/opt/PowerDNS-Admin"
 
 ENV APP_USER=web
-RUN useradd -s /bin/bash -d /home/$APP_USER -m $APP_USER &&
+ENV APP_PATH=/opt/PowerDNS-Admin
+RUN useradd -s /bin/bash -d $APP_PATH -m $APP_USER
 
+VOLUME $APP_PATH
+WORKDIR $APP_PATH
 
 RUN apt-get update && \
     apt-get install -y sudo curl git python libpython2.7 python-dev libsasl2-dev \
