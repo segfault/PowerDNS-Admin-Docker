@@ -1,13 +1,10 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-
 ENV APP_USER=web
 ENV APP_PATH=/opt/PowerDNS-Admin
-RUN useradd -s /bin/bash -d $APP_PATH -m $APP_USER
 
-VOLUME $APP_PATH
-WORKDIR $APP_PATH
+RUN useradd -s /bin/bash -d $APP_PATH -M $APP_USER
 
 RUN apt-get update && \
     apt-get install -y sudo curl git python libpython2.7 python-dev libsasl2-dev \
@@ -33,6 +30,10 @@ RUN sudo -u $APP_USER ./setup.py ;\
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+
+VOLUME $APP_PATH
+WORKDIR $APP_PATH
 
 USER $APP_USER
 ENTRYPOINT ["entrypoint.sh"]
