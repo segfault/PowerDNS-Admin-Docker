@@ -3,7 +3,11 @@
 # = "" if not hasattr(os.environ, "") else os.environ[""]
 import os
 
-configFile = open('config.py', 'w')
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+configPath = os.path.join(basedir, 'config.py')
+
+configFile = open(configPath, 'w')
 
 # File Imports
 configFile.write("import os\nbasedir = os.path.abspath(os.path.dirname(__file__))\n\n")
