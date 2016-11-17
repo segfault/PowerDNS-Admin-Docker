@@ -14,9 +14,6 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git $APP_PATH
 
-RUN ls -lah /opt
-RUN ls -lah $APP_PATH
-
 VOLUME $APP_PATH
 WORKDIR $APP_PATH
 
@@ -30,6 +27,8 @@ RUN chown -R $APP_USER:$APP_USER $APP_PATH
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+RUN ls -lah $APP_PATH
 
 USER $APP_USER
 ENTRYPOINT ["entrypoint.sh"]
