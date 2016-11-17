@@ -12,12 +12,7 @@ RUN apt-get update && \
         libldap2-dev && \
     curl https://bootstrap.pypa.io/get-pip.py | python 
 
-RUN chown -R $APP_USER:$APP_USER $APP_PATH
-
-RUN mkdir $APP_PATH/tmp
-RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git $APP_PATH/tmp; \
-    mv $APP_PATH/tmp/* $APP_PATH/tmp/.git* $APP_PATH; \
-    rmdir $APP_PATH/tmp
+RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt
 
 COPY setup.py $APP_PATH
 RUN chmod a+x setup.py
@@ -27,6 +22,8 @@ RUN ls -lah $APP_PATH
 
 RUN sudo -u $APP_USER ./setup.py ;\
     pip install -r requirements.txt
+
+RUN chown -R $APP_USER:$APP_USER $APP_PATH
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
