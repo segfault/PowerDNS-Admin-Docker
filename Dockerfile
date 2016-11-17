@@ -4,10 +4,29 @@ MAINTAINER Derek Vance <dvance@cerb-tech.com>
 VOLUME "/opt/PowerDNS-Admin"
 WORKDIR "/opt/PowerDNS-Admin"
 
-RUN apt-get update
-RUN apt-get -y install git python python-pip
-RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git .
+ENV APP_USER=web
+RUN useradd -s /bin/bash -d /home/$APP_USER -m $APP_USER &&
+
+
+RUN apt-get update && \
+    apt-get install -y sudo curl git python libpython2.7 python-dev libsasl2-dev \
+        build-essential libmariadbclient18 libmariadbclient-dev libssl-dev \
+        libldap2-dev && \
+    curl https://bootstrap.pypa.io/get-pip.py | python 
+
+RUN chown -R $APP_USER:$APP_USER /opt/PowerDNS-Admin
+
+RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git .
 COPY setup.py .
 
 RUN ./setup.py ;\
     pip install -r requirements.txt
+
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+USER $APP_USER
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 9393
+
+CMD ["./run.py"]
