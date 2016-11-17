@@ -18,9 +18,14 @@ RUN apt-get update && \
 RUN chown -R $APP_USER:$APP_USER .
 
 RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /tmp && mv /tmp/* .
-COPY setup.py .
 
-RUN ./setup.py ;\
+COPY setup.py .
+RUN chmod a+x setup.py
+
+RUN pwd
+RUN ls -lah
+
+RUN sudo -u $APP_USER./setup.py ;\
     pip install -r requirements.txt
 
 COPY entrypoint.sh /usr/local/bin/
