@@ -18,10 +18,10 @@ VOLUME $APP_PATH
 WORKDIR $APP_PATH
 
 COPY setup.py $APP_PATH
-RUN chmod +x setup.py
+RUN chmod +x $APP_PATH/setup.py
 
-RUN ./setup.py ;\
-    pip install -r requirements.txt
+RUN ./setup.py
+RUN pip install -r requirements.txt
 
 RUN chown -R $APP_USER:$APP_USER $APP_PATH
 
