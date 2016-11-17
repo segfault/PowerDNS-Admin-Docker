@@ -11,7 +11,7 @@ WORKDIR $APP_PATH
 
 RUN apt-get update && \
     apt-get install -y sudo curl git python libpython2.7 python-dev libsasl2-dev \
-        build-essential libmariadbclient18 libmariadbclient-dev libssl-dev \
+        build-essential libmysqlclient18 libmysqlclient-dev libssl-dev \
         libldap2-dev && \
     curl https://bootstrap.pypa.io/get-pip.py | python 
 
