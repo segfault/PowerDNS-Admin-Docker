@@ -16,9 +16,8 @@ RUN apt-get update && \
     curl https://bootstrap.pypa.io/get-pip.py | python 
 
 RUN chown -R $APP_USER:$APP_USER .
-RUN rm -rf * && rm -rf .*
 
-RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git .
+RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /tmp && mv /tmp/PowerDNS-Admin/* .
 COPY setup.py .
 
 RUN ./setup.py ;\
