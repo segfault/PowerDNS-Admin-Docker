@@ -12,7 +12,7 @@ RUN apt-get update && \
         libldap2-dev && \
     curl https://bootstrap.pypa.io/get-pip.py | python 
 
-RUN sudo -u $APP_USER git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt
+RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt
 
 COPY setup.py $APP_PATH
 RUN chmod a+x setup.py
