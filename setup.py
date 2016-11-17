@@ -5,9 +5,7 @@ import os
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-configPath = os.path.join(basedir, 'config.py')
-
-configFile = open(configPath, 'w')
+configFile = open(os.path.join(basedir, 'config.py'), 'w')
 
 # File Imports
 configFile.write("import os\nbasedir = os.path.abspath(os.path.dirname(__file__))\n\n")
@@ -128,7 +126,7 @@ configFile.close()
 
 PIP_REQUIREMENTS = "" if not hasattr(os.environ, "PIP_REQUIREMENTS") else os.environ["PIP_REQUIREMENTS"]
 if PIP_REQUIREMENTS != "":
-    reqsFile = open("requirements.txt", 'a')
+    reqsFile = open(os.path.join(basedir, "requirements.txt"), 'a')
     for req in PIP_REQUIREMENTS.split(","):
         reqsFile.write(req + "\n")
     reqsFile.close()
