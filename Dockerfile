@@ -20,7 +20,7 @@ WORKDIR $APP_PATH
 COPY setup.py $APP_PATH
 RUN chmod +x $APP_PATH/setup.py
 
-RUN python setup.py
+RUN python $APP_PATH/setup.py
 RUN pip install -r requirements.txt
 
 RUN chown -R $APP_USER:$APP_USER $APP_PATH
@@ -34,4 +34,4 @@ USER $APP_USER
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 9393
 
-CMD ["./run.py"]
+CMD ["python", "run.py"]
