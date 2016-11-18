@@ -57,48 +57,51 @@ configFile.write("SQLALCHEMY_TRACK_MODIFICATIONS = {0}\n".format(SQLALCHEMY_TRAC
 
 # LDAP CONFIG
 LDAP_TYPE = "False" if not os.environ.get("LDAP_TYPE") else os.environ["LDAP_TYPE"]
-configFile.write("LDAP_TYPE = {0}\n".format(LDAP_TYPE))
+if LDAP_TYPE:
+    configFile.write("LDAP_TYPE = {0}\n".format(LDAP_TYPE))
 
-LDAP_URI = "" if not os.environ.get("LDAP_URI") else os.environ["LDAP_URI"]
-configFile.write("LDAP_URI = '{0}'\n".format(LDAP_URI))
+    LDAP_URI = "" if not os.environ.get("LDAP_URI") else os.environ["LDAP_URI"]
+    configFile.write("LDAP_URI = '{0}'\n".format(LDAP_URI))
 
-LDAP_USERNAME = "" if not os.environ.get("LDAP_USERNAME") else os.environ["LDAP_USERNAME"]
-configFile.write("LDAP_USERNAME = '{0}'\n".format(LDAP_USERNAME))
+    LDAP_USERNAME = "" if not os.environ.get("LDAP_USERNAME") else os.environ["LDAP_USERNAME"]
+    configFile.write("LDAP_USERNAME = '{0}'\n".format(LDAP_USERNAME))
 
-LDAP_PASSWORD = "" if not os.environ.get("LDAP_PASSWORD") else os.environ["LDAP_PASSWORD"]
-configFile.write("LDAP_PASSWORD = '{0}'\n".format(LDAP_PASSWORD))
+    LDAP_PASSWORD = "" if not os.environ.get("LDAP_PASSWORD") else os.environ["LDAP_PASSWORD"]
+    configFile.write("LDAP_PASSWORD = '{0}'\n".format(LDAP_PASSWORD))
 
-LDAP_SEARCH_BASE = "" if not os.environ.get("LDAP_SEARCH_BASE") else os.environ["LDAP_SEARCH_BASE"]
-configFile.write("LDAP_SEARCH_BASE = '{0}'\n".format(LDAP_SEARCH_BASE))
+    LDAP_SEARCH_BASE = "" if not os.environ.get("LDAP_SEARCH_BASE") else os.environ["LDAP_SEARCH_BASE"]
+    configFile.write("LDAP_SEARCH_BASE = '{0}'\n".format(LDAP_SEARCH_BASE))
 
-LDAP_USERNAMEFIELD = "" if not os.environ.get("LDAP_USERNAMEFIELD") else os.environ["LDAP_USERNAMEFIELD"]
-configFile.write("LDAP_USERNAMEFIELD = '{0}'\n".format(LDAP_USERNAMEFIELD))
+    LDAP_USERNAMEFIELD = "" if not os.environ.get("LDAP_USERNAMEFIELD") else os.environ["LDAP_USERNAMEFIELD"]
+    configFile.write("LDAP_USERNAMEFIELD = '{0}'\n".format(LDAP_USERNAMEFIELD))
 
-LDAP_FILTER = "" if not os.environ.get("LDAP_FILTER") else os.environ["LDAP_FILTER"]
-configFile.write("LDAP_FILTER = '{0}'\n".format(LDAP_FILTER))
+    LDAP_FILTER = "" if not os.environ.get("LDAP_FILTER") else os.environ["LDAP_FILTER"]
+    configFile.write("LDAP_FILTER = '{0}'\n".format(LDAP_FILTER))
 
 # Github Oauth
 GITHUB_OAUTH_ENABLE = "False" if not os.environ.get("GITHUB_OAUTH_ENABLE") else os.environ["GITHUB_OAUTH_ENABLE"]
-configFile.write("GITHUB_OAUTH_ENABLE = {0}\n".format(GITHUB_OAUTH_ENABLE))
 
-GITHUB_OAUTH_KEY = "" if not os.environ.get("GITHUB_OAUTH_KEY") else os.environ["GITHUB_OAUTH_KEY"]
-configFile.write("GITHUB_OAUTH_KEY = '{0}'\n".format(GITHUB_OAUTH_KEY))
+if GITHUB_OAUTH_ENABLE:
+    configFile.write("GITHUB_OAUTH_ENABLE = {0}\n".format(GITHUB_OAUTH_ENABLE))
+    
+    GITHUB_OAUTH_KEY = "" if not os.environ.get("GITHUB_OAUTH_KEY") else os.environ["GITHUB_OAUTH_KEY"]
+    configFile.write("GITHUB_OAUTH_KEY = '{0}'\n".format(GITHUB_OAUTH_KEY))
 
-GITHUB_OAUTH_SECRET = "" if not os.environ.get("GITHUB_OAUTH_SECRET") else os.environ["GITHUB_OAUTH_SECRET"]
-configFile.write("GITHUB_OAUTH_SECRET = '{0}'\n".format(GITHUB_OAUTH_SECRET))
+    GITHUB_OAUTH_SECRET = "" if not os.environ.get("GITHUB_OAUTH_SECRET") else os.environ["GITHUB_OAUTH_SECRET"]
+    configFile.write("GITHUB_OAUTH_SECRET = '{0}'\n".format(GITHUB_OAUTH_SECRET))
 
-GITHUB_OAUTH_SCOPE = "" if not os.environ.get("GITHUB_OAUTH_SCOPE") else os.environ["GITHUB_OAUTH_SCOPE"]
-configFile.write("GITHUB_OAUTH_SCOPE = '{0}'\n".format(GITHUB_OAUTH_SCOPE))
+    GITHUB_OAUTH_SCOPE = "" if not os.environ.get("GITHUB_OAUTH_SCOPE") else os.environ["GITHUB_OAUTH_SCOPE"]
+    configFile.write("GITHUB_OAUTH_SCOPE = '{0}'\n".format(GITHUB_OAUTH_SCOPE))
 
-GITHUB_OAUTH_URL = "" if not os.environ.get("GITHUB_OAUTH_URL") else os.environ["GITHUB_OAUTH_URL"]
-configFile.write("GITHUB_OAUTH_URL = '{0}'\n".format(GITHUB_OAUTH_URL))
+    GITHUB_OAUTH_URL = "" if not os.environ.get("GITHUB_OAUTH_URL") else os.environ["GITHUB_OAUTH_URL"]
+    configFile.write("GITHUB_OAUTH_URL = '{0}'\n".format(GITHUB_OAUTH_URL))
 
-GITHUB_OAUTH_TOKEN = "" if not os.environ.get("GITHUB_OAUTH_TOKEN") else os.environ["GITHUB_OAUTH_TOKEN"]
-configFile.write("GITHUB_OAUTH_TOKEN = '{0}'\n".format(GITHUB_OAUTH_TOKEN))
+    GITHUB_OAUTH_TOKEN = "" if not os.environ.get("GITHUB_OAUTH_TOKEN") else os.environ["GITHUB_OAUTH_TOKEN"]
+    configFile.write("GITHUB_OAUTH_TOKEN = '{0}'\n".format(GITHUB_OAUTH_TOKEN))
 
-GITHUB_OAUTH_AUTHORIZE = "" if not os.environ.get("GITHUB_OAUTH_AUTHORIZE") else os.environ[
-    "GITHUB_OAUTH_AUTHORIZE"]
-configFile.write("GITHUB_OAUTH_AUTHORIZE = '{0}'\n".format(GITHUB_OAUTH_AUTHORIZE))
+    GITHUB_OAUTH_AUTHORIZE = "" if not os.environ.get("GITHUB_OAUTH_AUTHORIZE") else os.environ[
+        "GITHUB_OAUTH_AUTHORIZE"]
+    configFile.write("GITHUB_OAUTH_AUTHORIZE = '{0}'\n".format(GITHUB_OAUTH_AUTHORIZE))
 
 # Default Auth
 BASIC_ENABLED = "True" if not os.environ.get("BASIC_ENABLED") else os.environ["BASIC_ENABLED"]
