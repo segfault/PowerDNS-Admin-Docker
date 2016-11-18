@@ -4,8 +4,8 @@ set -e
 
 if [ -f $APP_PATH/config.py ];
 then
-  RUN python $APP_PATH/setup.py
-  RUN pip install -r requirements.txt
+  python $APP_PATH/setup.py
+  pip install -r requirements.txt
 fi
 
 cd $APP_PATH && python create_db.py
