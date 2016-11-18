@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-# configFile.write("{0}\n".format())
-# = "" if not hasattr(os.environ, "") else os.environ[""]
 import os
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 configFile = open(os.path.join(basedir, 'config.py'), 'w')
@@ -122,7 +121,6 @@ PRETTY_IPV6_PTR = "False" if not hasattr(os.environ, "PRETTY_IPV6_PTR") else os.
 configFile.write("PRETTY_IPV6_PTR = {0}\n".format(PRETTY_IPV6_PTR))
 
 configFile.close()
-print(open(os.path.join(basedir, 'config.py'), 'r').read())
 
 PIP_REQUIREMENTS = "" if not hasattr(os.environ, "PIP_REQUIREMENTS") else os.environ["PIP_REQUIREMENTS"]
 if PIP_REQUIREMENTS != "":
@@ -130,5 +128,3 @@ if PIP_REQUIREMENTS != "":
     for req in PIP_REQUIREMENTS.split(","):
         reqsFile.write(req + "\n")
     reqsFile.close()
-
-print(open(os.path.join(basedir, 'requirements.txt'), 'r').read())
