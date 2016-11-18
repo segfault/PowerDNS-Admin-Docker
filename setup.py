@@ -57,7 +57,7 @@ configFile.write("SQLALCHEMY_TRACK_MODIFICATIONS = {0}\n".format(SQLALCHEMY_TRAC
 
 # LDAP CONFIG
 LDAP_TYPE = "False" if not os.environ.get("LDAP_TYPE") else os.environ["LDAP_TYPE"]
-if LDAP_TYPE != False:
+if LDAP_TYPE != "False":
     configFile.write("LDAP_TYPE = {0}\n".format(LDAP_TYPE))
 
     LDAP_URI = "" if not os.environ.get("LDAP_URI") else os.environ["LDAP_URI"]
