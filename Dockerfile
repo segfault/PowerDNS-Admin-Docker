@@ -20,9 +20,6 @@ WORKDIR $APP_PATH
 COPY setup.py $APP_PATH
 RUN chmod +x $APP_PATH/setup.py
 
-RUN python $APP_PATH/setup.py
-RUN pip install -r requirements.txt
-
 RUN chown -R $APP_USER:$APP_USER $APP_PATH
 
 COPY entrypoint.sh /usr/local/bin/
