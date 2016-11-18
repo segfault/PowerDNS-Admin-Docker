@@ -30,7 +30,8 @@ configFile.write("TIMEOUT = {0}\n".format(TIMEOUT))
 
 # LOG CONFIG
 LOG_LEVEL = "WARNING" if not hasattr(os.environ, "LOG_LEVEL") else os.environ["LOG_LEVEL"]
-configFile.write("LOG_LEVEL = {0}\n".format(TIMEOUT))
+configFile.write("LOG_LEVEL = '{0}'\n".format(TIMEOUT))
+
 configFile.write("LOG_FILE = ''\n")
 
 # UPLOAD
