@@ -34,7 +34,7 @@ configFile.write("TIMEOUT = {0}\n".format(TIMEOUT))
 
 # LOG CONFIG
 LOG_LEVEL = "WARNING" if not os.environ.get("LOG_LEVEL") else os.environ["LOG_LEVEL"]
-configFile.write("LOG_LEVEL = '{0}'\n".format(TIMEOUT))
+configFile.write("LOG_LEVEL = '{0}'\n".format(LOG_LEVEL))
 
 configFile.write("LOG_FILE = ''\n")
 
@@ -57,7 +57,7 @@ configFile.write("SQLALCHEMY_TRACK_MODIFICATIONS = {0}\n".format(SQLALCHEMY_TRAC
 
 # LDAP CONFIG
 LDAP_TYPE = "False" if not os.environ.get("LDAP_TYPE") else os.environ["LDAP_TYPE"]
-if LDAP_TYPE:
+if LDAP_TYPE != False:
     configFile.write("LDAP_TYPE = {0}\n".format(LDAP_TYPE))
 
     LDAP_URI = "" if not os.environ.get("LDAP_URI") else os.environ["LDAP_URI"]
@@ -81,7 +81,7 @@ if LDAP_TYPE:
 # Github Oauth
 GITHUB_OAUTH_ENABLE = "False" if not os.environ.get("GITHUB_OAUTH_ENABLE") else os.environ["GITHUB_OAUTH_ENABLE"]
 
-if GITHUB_OAUTH_ENABLE:
+if GITHUB_OAUTH_ENABLE != "False":
     configFile.write("GITHUB_OAUTH_ENABLE = {0}\n".format(GITHUB_OAUTH_ENABLE))
     
     GITHUB_OAUTH_KEY = "" if not os.environ.get("GITHUB_OAUTH_KEY") else os.environ["GITHUB_OAUTH_KEY"]
