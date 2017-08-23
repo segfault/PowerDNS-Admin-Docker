@@ -1,12 +1,12 @@
 FROM debian:jessie
-MAINTAINER Derek Vance <dvance@cerb-tech.com>
+MAINTAINER Mark Guzman <segfault@hasno.info>
 
 ENV APP_PATH=/opt/PowerDNS-Admin
 
 RUN apt-get update && \
     apt-get install -y sudo curl git python libpython2.7 python-dev libsasl2-dev \
         build-essential libmysqlclient18 libmysqlclient-dev libssl-dev \
-        libldap2-dev && \
+        libldap2-dev libpq-dev libpq5 && \
     curl https://bootstrap.pypa.io/get-pip.py | python 
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git $APP_PATH
